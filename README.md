@@ -1,7 +1,11 @@
 jQuery-Tabs
 ===========
 
-A simple jQuery html tab system. 
+A simple jQuery html tab system. This plugin provides a simple, very thin, alternative to jQuery UI's tabs. All without needing to include jQUery UI anywhere.
+
+This plugin is made to be lightweight, therefore it does not have a million confusing configuration options. Only three simple ones. 
+
+If you wish to implement features similar to the jQuery UI tabs (eg, ajax loading, sortable tabs and so on), this should be easily doable using some more jQuery on your end.
 
 Usage
 -----
@@ -139,3 +143,10 @@ even a data attribute, such as data-tabs.
 </body>
 </html>
 ```
+
+Future Additions
+----------------
+
+- Addd `active` or `tab-active` class to currently open tab link and tab.
+- Add oncomplete callback option.
+- Add `on` option to set what to open the tab on. (eg, click, mouseover, custom event ect)
