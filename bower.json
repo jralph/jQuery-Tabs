@@ -3,7 +3,9 @@
     "main": "tabs.js",
     "ignore": [
         "README.md",
-        "LICENSE"
+        "LICENSE",
+        "bower.json",
+        ".gitignore"
     ],
     "dependencies": {
         "jquery": ">=1.10.2"
