@@ -1,0 +1,11 @@
+{
+    "name": "jQuery-Tabs",
+    "main": "tabs.js",
+    "ignore": [
+        "README.md",
+        "LICENSE"
+    ],
+    "dependencies": {
+        "jquery": ">=1.10.2"
+    }
+}
