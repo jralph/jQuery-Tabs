@@ -14,19 +14,21 @@ This jQuery plugin has been setup to work with bower.
 
 To install with bower, run the following bower command.
 
-`bower install jralph/jQuery-Tabs`
+`bower install jQuery-Tabs`
 
 Or add the package to your dependencies in  your bower.json file.
 
 ```js
 "dependencies": {
     ...
-    "jQuery-Tabs": "jralph/jQuery-Tabs#1.0.0"
+    "jQuery-Tabs": "jQuery-Tabs#1.0.0"
     ...
 }
 ```
 
 Then, in your project folder, run `bower install` to pull down the package.
+
+*Note: You can also use the git repository `jralph\jQuery-Tabs` instead of the direct `jQuery-Tabs` package.*
 
 Usage
 -----
