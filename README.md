@@ -7,6 +7,27 @@ This plugin is made to be lightweight, therefore it does not have a million conf
 
 If you wish to implement features similar to the jQuery UI tabs (eg, ajax loading, sortable tabs and so on), this should be easily doable using some more jQuery on your end.
 
+Bower Install (Optional)
+------------------------
+
+This jQuery plugin has been setup to work with bower.
+
+To install with bower, run the following bower command.
+
+`bower install jralph/jQuery-Tabs`
+
+Or add the package to your dependencies in  your bower.json file.
+
+```js
+"dependencies": {
+    ...
+    "jQuery-Tabs": "jralph/jQuery-Tabs#1.0.0"
+    ...
+}
+```
+
+Then, in your project folder, run `bower install` to pull down the package.
+
 Usage
 -----
 
