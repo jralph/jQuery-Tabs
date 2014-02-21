@@ -172,5 +172,6 @@ Future Additions
 
 - Addd `active` or `tab-active` class to currently open tab link and tab.
 - Add oncomplete callback option.
-- Add `on` option to set what to open the tab on. (eg, click, mouseover, custom event ect)
+- Add `on` option to set what to open the tab on. (eg, click, mouseover, custom event ect.)
 - ~~Add `minified` version of `tabs.js`~~
+- Add `on` delay time. (eg, delay for 200ms before loading new tab on hover.)
