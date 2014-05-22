@@ -58,13 +58,13 @@ even a data attribute, such as data-tabs.
 </ul>
 
 <!-- data-tabs-default is provided to make sure that tab1 is loaded on start. -->
-<div id="tab1" data-tabs-default>
+<div id="tab1" data-tabs-default data-tab-content>
     <p>This is tab1.</p>
 </div>
-<div id="tab2">
+<div id="tab2" data-tab-content>
     <p>This is tab2.</p>
 </div>
-<div id="tab3">
+<div id="tab3" data-tab-content>
     <p>This is tab3.</p>
 </div>
 
@@ -141,13 +141,13 @@ even a data attribute, such as data-tabs.
 </ul>
 
 <!-- data-tabs-default is provided to make sure that tab1 is loaded on start. -->
-<div id="tab1" data-tabs-default>
+<div id="tab1" data-tabs-default data-tab-content>
     <p>This is tab1.</p>
 </div>
-<div id="tab2">
+<div id="tab2" data-tab-content>
     <p>This is tab2.</p>
 </div>
-<div id="tab3">
+<div id="tab3" data-tab-content>
     <p>This is tab3.</p>
 </div>
 
