@@ -80,7 +80,7 @@ even a data attribute, such as data-tabs.
 </html>
 ```
 
-With the above code, when a tab link is clicked, it will open the corresponding tab. The script will also close any other open tabs before opening the requested tab.
+With the above code, when a tab link is clicked, it will open the corresponding tab. The script will also close any other open tabs before opening the requested tab. When the tab is opened, a class of `.tab-active` will be added to the currently open tab link.
 
 *Note: No CSS is requried, but you may wish to add a display:none to each of the tab div's to make sure that they are hidden while the page is loading. If not, the divs will be visible until the script is called.*
 
@@ -93,7 +93,8 @@ Below you will find a list of the available settings for the plugin.
 {
     inAnimation: 'show',
     outAnimation: 'hide',
-    speed: 200
+    speed: 200,
+    activeClass: 'tab-active'
 }
 ```
 
@@ -115,6 +116,12 @@ This setting lets you set the speed of the animation (As long as the animation f
 
 This could be set to any numeric value, eg. `400`.
 
+### activeClass ###
+
+The class to add to the currently active tab link. This should not contain a `.` or `#` as the setting only supports classes.
+
+This could be set to `active`, `current-tab`, or any other class of your choice.
+
 Setting Example
 ---------------
 
@@ -134,6 +141,7 @@ even a data attribute, such as data-tabs.
 <ul id="tabs">
     
     <!-- The data-tab attribute specifies the ID of the tab to open when clicked. -->
+    <!-- The currently active tab link will recieve the .current-tab class from settings. -->
     <li><a data-tab="#tab1" href="#">Tab1</a></li>
     <li><a data-tab="#tab2" href="#">Tab2</a></li>
     <li><a data-tab="#tab3" href="#">Tab3</a></li>
@@ -158,7 +166,8 @@ even a data attribute, such as data-tabs.
         $('#tabs a').tabs({
             inAnimation: 'fadeIn',
             outAnimation: 'fadeOut',
-            speed: 250
+            speed: 250,
+            activeClass: 'current-tab'
         });
     });
 </script>
@@ -170,7 +179,7 @@ even a data attribute, such as data-tabs.
 Future Additions
 ----------------
 
-- Addd `active` or `tab-active` class to currently open tab link and tab.
+- ~~Addd `active` or `tab-active` class to currently open tab link and tab.~~
 - Add oncomplete callback option.
 - Add `on` option to set what to open the tab on. (eg, click, mouseover, custom event ect.)
 - ~~Add `minified` version of `tabs.js`~~

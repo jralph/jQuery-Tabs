@@ -30,7 +30,8 @@
         defaults = {
             inAnimation: 'show',
             outAnimation: 'hide',
-            speed: 200
+            speed: 200,
+            activeClass: 'tab-active'
         };
 
     /**
@@ -77,7 +78,28 @@
      * @return {void}
      */
     tabs.prototype.showDefault = function() {
-        $('[data-tabs-default]').show();
+        var defaultTab = $('[data-tabs-default]'),
+            id = defaultTab.attr('id'),
+            defaultLink = $('[data-tab="#'+id+'"]');
+        $(defaultTab).show();
+        this.addActiveClass(defaultLink);
+    };
+
+    /**
+     * Method to add the active class to the currently active tab link.
+     * @param {object} element The element to add the class to.
+     */
+    tabs.prototype.addActiveClass = function(element) {
+        $(element).addClass(this.options.activeClass);
+    };
+
+    /**
+     * Method to remove the active class from a given element/selector.
+     * @param  {object} element The element/selector.
+     * @return {void}
+     */
+    tabs.prototype.removeActiveClass = function(element) {
+        $(element).removeClass(this.options.activeClass);
     };
 
     /**
@@ -101,6 +123,9 @@
      */
     tabs.prototype.runClick = function(element) {
         var tab = $(element).data('tab');
+
+        this.removeActiveClass(this.element);
+        this.addActiveClass(element);
 
         this.hideOpen(tab);
         this.showTab(tab);
