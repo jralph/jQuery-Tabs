@@ -21,7 +21,7 @@ Or add the package to your dependencies in  your bower.json file.
 ```js
 "dependencies": {
     ...
-    "jQuery-Tabs": "jQuery-Tabs#1.0.0"
+    "jQuery-Tabs": "jQuery-Tabs#1.2.0"
     ...
 }
 ```
