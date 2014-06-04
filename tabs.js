@@ -31,7 +31,10 @@
             inAnimation: 'show',
             outAnimation: 'hide',
             speed: 200,
-            activeClass: 'tab-active'
+            activeClass: 'tab-active',
+            complete: function(element, tab) {
+
+            }
         };
 
     /**
@@ -110,10 +113,24 @@
         var _this = this;
         $(this.element).each(function() {
             $(this).click(function() {
-                _this.runClick(this);
+                var tab = _this.runClick(this);
+                _this.runComplete(this, tab);
                 return false;
             });
         });
+    };
+
+    /**
+     * Run the complete callback when a click has been registered and the
+     * tab has been shown.
+     * @param  {object} element The element clicked on.
+     * @param  {object} tab     The tab being loaded.
+     * @return {void}
+     */
+    tabs.prototype.runComplete = function(element, tab) {
+        if (jQuery.isFunction(this.options.complete)) {
+            this.options.complete(element, tab);
+        }
     };
 
     /**
@@ -129,6 +146,8 @@
 
         this.hideOpen(tab);
         this.showTab(tab);
+
+        return tab;
     };
 
     /**

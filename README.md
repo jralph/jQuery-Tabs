@@ -94,7 +94,10 @@ Below you will find a list of the available settings for the plugin.
     inAnimation: 'show',
     outAnimation: 'hide',
     speed: 200,
-    activeClass: 'tab-active'
+    activeClass: 'tab-active',
+    complete: function(element, tab) {
+        // code to run on tab click complete
+    }
 }
 ```
 
@@ -121,6 +124,15 @@ This could be set to any numeric value, eg. `400`.
 The class to add to the currently active tab link. This should not contain a `.` or `#` as the setting only supports classes.
 
 This could be set to `active`, `current-tab`, or any other class of your choice.
+
+### complete ###
+
+The callback function to run just after a tab link has been clicked and the tab loaded. This should always be a function, and the function can accept the paramaters 
+of `element` and `tab`. 
+
+The `element` is the link element that was clicked on.
+
+The `tab` is the tab element that has been shown.
 
 Setting Example
 ---------------
@@ -167,7 +179,11 @@ even a data attribute, such as data-tabs.
             inAnimation: 'fadeIn',
             outAnimation: 'fadeOut',
             speed: 250,
-            activeClass: 'current-tab'
+            activeClass: 'current-tab',
+            complete: function(element, tab) {
+                console.log(element);   // Would output the jQuery element for the data-tab clicked.
+                console.log(tab);       // Would output the jQuery element for the data-tab-content shown.
+            }
         });
     });
 </script>
@@ -180,7 +196,5 @@ Future Additions
 ----------------
 
 - ~~Addd `active` or `tab-active` class to currently open tab link and tab.~~
-- Add oncomplete callback option.
-- Add `on` option to set what to open the tab on. (eg, click, mouseover, custom event ect.)
+- ~~Add oncomplete callback option.~~
 - ~~Add `minified` version of `tabs.js`~~
-- Add `on` delay time. (eg, delay for 200ms before loading new tab on hover.)
