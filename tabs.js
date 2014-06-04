@@ -1,5 +1,10 @@
 /**
  * Tabs jQuery Plugin
+ * 
+ * @desc This jQuery plugin provides lightweight tabbing functionality and requires jquery.
+ * @author Joseph Ralph <joe@josephralph.co.uk>
+ * @uri https://github.com/jralph/jQuery-Tabs/
+ * @author_uri https://github.com/jralph
  *
  * Example:
  * <code>
