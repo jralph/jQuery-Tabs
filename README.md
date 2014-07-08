@@ -198,3 +198,4 @@ Future Additions
 - ~~Addd `active` or `tab-active` class to currently open tab link and tab.~~
 - ~~Add oncomplete callback option.~~
 - ~~Add `minified` version of `tabs.js`~~
+- Add option to set default tab via # paramater in url.
