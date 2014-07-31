@@ -10,10 +10,17 @@ If you wish to implement features similar to the jQuery UI tabs (eg, ajax loadin
 Standard Install
 ----------------
 
-Not looking to use Bower at all? Then you can simply use this plugin by downloading the `tabs.js` or `tabs.min.js` file and adding it to your project in the footer. (Or header if you prefer.)
+Not looking to use Bower at all? Then you can simply use this plugin by downloading the `tabs.js` or `jquery.tabs.min.js` file and adding it to your project in the footer. (Or header if you prefer.)
 
 ```
-<script src="/path/to/tabs.min.js"></script>
+<script src="/path/to/jquery.tabs.min.js"></script>
+```
+
+If you have downloaded the full repository (using Download ZIP to the right) you will need to set the path to the dist directory for the minified version or to the build directory for the non-minified version.
+
+```
+<script src="/jQuery-Tabs/dist/js/jquery.tabs.min.js"></script>
+<script src="/jQuery-Tabs/build/js/tabs.js"></script>
 ```
 
 Bower Install (Optional)

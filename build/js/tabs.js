@@ -39,11 +39,14 @@
             activeClass: 'tab-active',
             complete: function(element, tab) {
 
-            }
+            },
+            watchHash: true,
+            defaultFromHash: true
         };
 
     /**
      * Create {object} element The jQuery element object.
+     *
      * @param  {object} options Any options passed to the plugin.
      * @return {void}
      */
@@ -61,40 +64,57 @@
 
     /**
      * Method to initialize the plugin.
+     *
      * @return {void}
      */
     tabs.prototype.init = function() {
         this.hideAll();
         this.showDefault();
         this.addClickEvent();
+
+        if (this.options.watchHash) {
+            this.watchURLHash();
+        }
     };
 
     /**
      * Method to hide all tabs, open or not.
+     *
      * @return {void}
      */
     tabs.prototype.hideAll = function() {
+        var _this = this;
         $(this.element).each(function() {
             var tabContent = $(this).data('tab');
 
             $(tabContent).hide();
+            _this.removeActiveClass(this);
         });
     };
 
     /**
      * Method to show any default 'open' tabs.
+     *
      * @return {void}
      */
     tabs.prototype.showDefault = function() {
         var defaultTab = $('[data-tabs-default]'),
             id = defaultTab.attr('id'),
             defaultLink = $('[data-tab="#'+id+'"]');
-        $(defaultTab).show();
-        this.addActiveClass(defaultLink);
+
+        if (this.options.defaultFromHash && this.isTab(window.location.hash)) {
+            var hashLink = $('[data-tab="'+window.location.hash+'"]');
+            $(window.location.hash).show();
+            this.addActiveClass(hashLink);
+        } else {
+            $(defaultTab).show();
+            this.addActiveClass(defaultLink);
+        }
     };
 
     /**
      * Method to add the active class to the currently active tab link.
+     *
      * @param {object} element The element to add the class to.
      */
     tabs.prototype.addActiveClass = function(element) {
@@ -103,6 +123,7 @@
 
     /**
      * Method to remove the active class from a given element/selector.
+     *
      * @param  {object} element The element/selector.
      * @return {void}
      */
@@ -112,6 +133,7 @@
 
     /**
      * Method to add the click event to the selected elements.
+     *
      * @return {void}
      */
     tabs.prototype.addClickEvent = function() {
@@ -126,8 +148,36 @@
     };
 
     /**
+     * If a hash value is a tab on the page, load it by default.
+     *
+     * @return {void}
+     */
+    tabs.prototype.watchURLHash = function() {
+        var _this = this;
+        $(window).on('hashchange', function() {
+            if (_this.isTab(window.location.hash)) {
+                _this.hideOpen(window.location.hash);
+                _this.showTab(window.location.hash);
+                _this.addActiveClass($('[data-tab="'+window.location.hash+'"]'));
+            }
+        });
+    };
+
+    tabs.prototype.isTab = function(selector) {
+        var element = $(selector),
+            tab_content = element.attr('data-tab-content');
+
+        if (tab_content === typeof undefined || tab_content === false) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+
+    /**
      * Run the complete callback when a click has been registered and the
      * tab has been shown.
+     *
      * @param  {object} element The element clicked on.
      * @param  {object} tab     The tab being loaded.
      * @return {void}
@@ -140,6 +190,7 @@
 
     /**
      * Method to run when the click event is fired.
+     *
      * @param  {object} element The element clicked on.
      * @return {void}
      */
@@ -157,6 +208,7 @@
 
     /**
      * Method to hide any other open tabs apart from the clicked on tab.
+     *
      * @param  {object} tab The clicked on tab to open.
      * @return {void}
      */
@@ -164,13 +216,16 @@
         var _this = this;
         $('[data-tab-content]:not('+tab+')').each(function() {
             if ($(this).is(':visible')) {
+                var id = $(this).attr('id');
                 $(this)[_this.options.outAnimation](_this.options.speed);
+                _this.removeActiveClass($('[data-tab="#'+id+'"]'));
             }
         });
     };
 
     /**
      * Method to show the requested tab.
+     *
      * @param  {object} tab The requeted tab.
      * @return {void}
      */
@@ -178,8 +233,11 @@
         $(tab).delay(this.options.speed)[this.options.inAnimation](this.options.speed);
     };
 
-    /*
-    Register the plugin.
+    /**
+     * Register the plugin.
+     *
+     * @param  {object} options Any custom options to add to the plugin.
+     * @return {this}
      */
     $.fn[pluginName] = function(options) {
         if(!$.data(this, 'plugin_' + pluginName)) {
