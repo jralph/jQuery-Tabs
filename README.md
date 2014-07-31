@@ -198,6 +198,7 @@ Future Additions
 - ~~Addd `active` or `tab-active` class to currently open tab link and tab.~~
 - ~~Add oncomplete callback option.~~
 - ~~Add `minified` version of `tabs.js`~~
+- Create as grunt package to ease building procedure and minifying.
 - Add option to set default tab via # paramater in url.
 - On tab open, add true/false option to append tab id to url.
 - When above is true, use HTML5 history api.
