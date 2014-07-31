@@ -199,3 +199,5 @@ Future Additions
 - ~~Add oncomplete callback option.~~
 - ~~Add `minified` version of `tabs.js`~~
 - Add option to set default tab via # paramater in url.
+- On tab open, add true/false option to append tab id to url.
+- When above is true, use HTML5 history api.
