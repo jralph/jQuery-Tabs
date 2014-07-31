@@ -1,0 +1,37 @@
+{
+    "name": "jQuery-Tabs",
+    "title": "jQuery-Tabs",
+    "description": "A simple jQuery html tab system. This plugin provides a simple, very thin, alternative to jQuery UI's tabs. All without needing to include jQUery UI anywhere.",
+    "keywords": [
+        "tabs",
+        "accordion",
+        "tabbing",
+        "tabbed",
+        "tab"
+    ],
+    "version": "1.2.0",
+    "author": {
+        "name": "Joseph Ralph",
+        "url": "http://josephralph.co.uk"
+    },
+    "maintainers": [
+        {
+            "name": "Joseph Ralph",
+            "email": "joe@josephralph.co.uk",
+            "url": "http://josephralph.co.uk"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/jralph/jQuery-Tabs/blob/master/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/jralph/jQuery-Tabs/issues",
+    "homepage": "https://github.com/jralph/jQuery-Tabs",
+    "docs": "https://github.com/jralph/jQuery-Tabs",
+    "download": "https://github.com/jralph/jQuery-Tabs/archive/master.zip",
+    "dependencies": {
+        "jquery": ">=1.8"
+    }
+}
