@@ -7,6 +7,15 @@ This plugin is made to be lightweight, therefore it does not have a million conf
 
 If you wish to implement features similar to the jQuery UI tabs (eg, ajax loading, sortable tabs and so on), this should be easily doable using some more jQuery on your end.
 
+Standard Install
+----------------
+
+Not looking to use Bower at all? Then you can simply use this plugin by downloading the `tabs.js` or `tabs.min.js` file and adding it to your project in the footer. (Or header if you prefer.)
+
+```
+<script src="/path/to/tabs.min.js"></script>
+```
+
 Bower Install (Optional)
 ------------------------
 
