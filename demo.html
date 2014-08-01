@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-Tabs</title>
+
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Roboto", "Arial", serif;
+            margin: 0;
+        }
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            font-weight: 200;
+            text-align: center;
+            padding: 30px;
+            margin: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 {
+            font-size: 1.3em;
+            font-weight: 200;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 0;
+        }
+
+        h1 a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        ul {
+            margin: 0;
+        }
+
+        hr {
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #eee;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .tab-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            float: left;
+        }
+
+        /* BASIC TABS STYLE */
+        .basic-tabs [data-tab] {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            text-decoration: none;
+            background-color: #fff;
+        }
+
+        .basic-tabs [data-tab].tab-active {
+            border-top: 2px solid #3498db;
+        }
+
+        .basic-tabs [data-tab-content] {
+            border: 1px solid #ddd;
+            padding: 20px;
+            float: left;
+            width: 100%;
+        }
+
+        /* SIDE TABS STYLE */
+        .tab-links {
+            width: 20%;
+            float: left;
+        }
+
+        .tab-content {
+            width: 80%;
+            float: left;
+        }
+
+        .side-tabs [data-tab] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-right: none;
+            text-decoration: none;
+            background-color: #fff;
+        }
+
+        .side-tabs [data-tab].tab-active {
+            border-top: 2px solid #3498db;
+        }
+
+        .side-tabs [data-tab-content] {
+            border: 1px solid #ddd;
+            padding: 20px;
+            float: left;
+            width: 100%;
+        }
+
+        /* ACCORDION TABS STYLE */
+        .accordion-tabs [data-tab] {
+            display: block;
+            width: 100%;
+            float: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .accordion-tabs [data-tab].tab-active {
+            border-bottom: 2px solid #3498db;
+        }
+
+        .accordion-tabs [data-tab-content] {
+            border: 1px solid #ddd;
+            padding: 20px;
+            float: left;
+            width: 100%;
+        }
+    </style>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="build/js/tabs.js"></script>
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1><a href="https://github.com/jralph/jQuery-Tabs">jQuery-Tabs</a></h1>
+
+        <p>For some basic demos of the tabs in action, you can view the examples on this page. For the code used, feel free to inspect the page source.</p>
+
+        <h2>Contents</h2>
+
+        <ul>
+            <li>Basic Tabs</li>
+            <li>Side Tabs</li>
+            <li>Accordion Tabs</li>
+        </ul>
+
+        <hr>
+        
+        <h2>Basic Tabs</h2>
+
+        <p>Below is a very basic setup for the tabs. Just providing 3 simple tabs and minimal styling.</p>
+
+        <div class="basic-tabs tab-container">
+            <a data-tab="#basic-tab1" href="#">Tab 1</a>
+            <a data-tab="#basic-tab2" href="#">Tab 2</a>
+            <a data-tab="#basic-tab3" href="#">Tab 3</a>
+
+            <div data-tab-content data-tabs-default id="basic-tab1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nisi consectetur, accusantium!</p>
+            </div>
+            <div data-tab-content id="basic-tab2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+            </div>
+            <div data-tab-content id="basic-tab3">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, delectus?</p>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                $('.basic-tabs [data-tab]').tabs();
+            });
+        </script>
+
+        <h2>Side Tabs</h2>
+
+        <p>Below is a very basic setup for the tabs. Just providing 3 simple tabs and with the tab links positioned to the side.</p>
+
+        <div class="side-tabs tab-container">
+            <div class="tab-links">
+                <a data-tab="#side-tab1" href="#">Tab 1</a>
+                <a data-tab="#side-tab2" href="#">Tab 2</a>
+                <a data-tab="#side-tab3" href="#">Tab 3</a>
+            </div>
+            
+            <div class="tab-content">
+                <div data-tab-content id="side-tab1">
+                    <h2>Tab 1</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nisi consectetur, accusantium!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, delectus?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                </div>
+                <div data-tab-content data-tabs-default id="side-tab2">
+                    <h2>Tab 2</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nisi consectetur, accusantium!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                </div>
+                <div data-tab-content id="side-tab3">
+                    <h2>Tab 3</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, delectus?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nisi consectetur, accusantium!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                $('.side-tabs [data-tab]').tabs();
+            });
+        </script>
+
+        <h2>Accordion Tabs</h2>
+
+        <p>Below is a simple way to turn the tabs into an accordion.</p>
+
+        <div class="accordion-tabs tab-container">
+
+            <a data-tab="#accordion-tab1" href="#">Tab 1</a>
+            
+            <div data-tab-content id="accordion-tab1">
+                <h2>Tab 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nisi consectetur, accusantium!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, delectus?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+            </div>
+
+            <a data-tab="#accordion-tab2" href="#">Tab 2</a>
+
+            <div data-tab-content id="accordion-tab2">
+                <h2>Tab 2</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nisi consectetur, accusantium!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+            </div>
+
+            <a data-tab="#accordion-tab3" href="#">Tab 3</a>
+
+            <div data-tab-content data-tabs-default id="accordion-tab3">
+                <h2>Tab 3</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, delectus?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nisi consectetur, accusantium!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ipsam nobis laudantium, tenetur dolorem, maiores obcaecati. Aperiam a laudantium, dolore, doloribus commodi officia.</p>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                $('.accordion-tabs [data-tab]').tabs({
+                    inAnimation: 'slideDown',
+                    outAnimation: 'slideUp',
+                    speed: 200,
+                    animationComplete: function(tab) {
+                        var top = $(tab).position().top;
+
+                        $(window).scrollTop(top);
+
+                        console.log(top);
+                    }
+                });
+            });
+        </script>
+
+    </div>
+
+</body>
+</html>

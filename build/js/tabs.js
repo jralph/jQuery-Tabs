@@ -35,9 +35,12 @@
         defaults = {
             inAnimation: 'show',
             outAnimation: 'hide',
-            speed: 200,
+            speed: 0,
             activeClass: 'tab-active',
             complete: function(element, tab) {
+
+            },
+            animationComplete: function(tab) {
 
             },
             watchHash: true,
@@ -99,16 +102,19 @@
      */
     tabs.prototype.showDefault = function() {
         var defaultTab = $('[data-tabs-default]'),
-            id = defaultTab.attr('id'),
-            defaultLink = $('[data-tab="#'+id+'"]');
+            _this = this;
 
         if (this.options.defaultFromHash && this.isTab(window.location.hash)) {
             var hashLink = $('[data-tab="'+window.location.hash+'"]');
             $(window.location.hash).show();
             this.addActiveClass(hashLink);
         } else {
-            $(defaultTab).show();
-            this.addActiveClass(defaultLink);
+            $(defaultTab).show(0, function() {
+                var id = $(this).attr('id'),
+                    defaultLink = $('[data-tab="#'+id+'"]');
+
+                _this.addActiveClass(defaultLink);
+            });
         }
     };
 
@@ -167,7 +173,7 @@
         var element = $(selector),
             tab_content = element.attr('data-tab-content');
 
-        if (tab_content === typeof undefined || tab_content === false) {
+        if (tab_content === typeof undefined || tab_content === false || tab_content === undefined) {
             return false;
         } else {
             return true;
@@ -214,12 +220,15 @@
      */
     tabs.prototype.hideOpen = function(tab) {
         var _this = this;
-        $('[data-tab-content]:not('+tab+')').each(function() {
-            if ($(this).is(':visible')) {
-                var id = $(this).attr('id');
-                $(this)[_this.options.outAnimation](_this.options.speed);
-                _this.removeActiveClass($('[data-tab="#'+id+'"]'));
+        $(this.selector).each(function() {
+            var currentTab = $($(this).data('tab'));
+
+            if (currentTab == tab) {
+                return true;
             }
+
+            $(currentTab)[_this.options.outAnimation](_this.options.speed);
+            _this.removeActiveClass($('[data-tab="'+currentTab+'"]'));
         });
     };
 
@@ -230,7 +239,22 @@
      * @return {void}
      */
     tabs.prototype.showTab = function(tab) {
-        $(tab).delay(this.options.speed)[this.options.inAnimation](this.options.speed);
+        var _this = this;
+        $(tab).delay(this.options.speed)[this.options.inAnimation](this.options.speed, function() {
+            _this.runAnimationComplete(this);
+        });
+    };
+
+    /**
+     * Run a callback when the animation is complete.
+     * 
+     * @param  {object} tab
+     * @return {void}
+     */
+    tabs.prototype.runAnimationComplete = function(tab) {
+        if (jQuery.isFunction(this.options.animationComplete)) {
+            this.options.animationComplete(tab);
+        }
     };
 
     /**

@@ -7,6 +7,21 @@ This plugin is made to be lightweight, therefore it does not have a million conf
 
 If you wish to implement features similar to the jQuery UI tabs (eg, ajax loading, sortable tabs and so on), this should be easily doable using some more jQuery on your end.
 
+Contents
+--------
+
+- [Standard Install](#standard-install)
+- [Bower Install](#bower-install-optional)
+- [Usage](#usage)
+- [Settings](#settings)
+    - [inAnimation](#inanimation)
+    - [outAnimation](#outanimation)
+    - [speed](#speed)
+    - [activeClass](#activeclass)
+    - [complete](#complete)
+- [Settings Example](#settings-example)
+- [Future Additions](#future-additions)
+
 Standard Install
 ----------------
 
@@ -113,7 +128,12 @@ Below you will find a list of the available settings for the plugin.
     activeClass: 'tab-active',
     complete: function(element, tab) {
         // code to run on tab click complete
-    }
+    },
+    animationComplete: function(tab) {
+        // code to run on show animation completion
+    },
+    watchHash: true,
+    defaultFromHash: true
 }
 ```
 
@@ -150,7 +170,25 @@ The `element` is the link element that was clicked on.
 
 The `tab` is the tab element that has been shown.
 
-Setting Example
+### animationComplete ###
+
+Similar to the complete option. This is a callback function to run on completion of the tab inAnimation. This should always be a function and can accept the paramater `tab`.
+
+The `tab` paramater is the tab element that has been shown.
+
+### watchHash ###
+
+A simple true or false variable that defines if the plugin should watch the url for hash changes to trigger tabs.
+
+This will trigger a tab to open as if the corresponding link was clicked on.
+
+### defaultFromHash ###
+
+A simple true of false to enable the plugin to open a default tab based on the url hash, if set.
+
+This can be helpful if you wish to redirect back to a page with a specific tab open, just pass the tab id into the url `http://example.com/mypage.html#tab1` and the corresponding tab will be open when the page has loaded.
+
+Settings Example
 ---------------
 
 ```html
@@ -214,7 +252,6 @@ Future Additions
 - ~~Addd `active` or `tab-active` class to currently open tab link and tab.~~
 - ~~Add oncomplete callback option.~~
 - ~~Add `minified` version of `tabs.js`~~
-- Create as grunt package to ease building procedure and minifying.
-- Add option to set default tab via # paramater in url.
-- On tab open, add true/false option to append tab id to url.
-- When above is true, use HTML5 history api.
+- ~~Create as grunt package to ease building procedure and minifying.~~
+- ~~Add option to set default tab via # paramater in url.~~
+- Enable usage with HTML5 history api.
