@@ -107,6 +107,7 @@
         if (this.options.defaultFromHash && this.isTab(window.location.hash)) {
             var hashLink = $('[data-tab="'+window.location.hash+'"]');
             $(window.location.hash).show();
+            this.hideOpen(window.location.hash);
             this.addActiveClass(hashLink);
         } else {
             $(defaultTab).show(0, function() {
@@ -170,6 +171,20 @@
     };
 
     tabs.prototype.isTab = function(selector) {
+        var inScope = false;
+
+        $(this.selector).each(function() {
+            var tab = $(this).data('tab');
+
+            if (tab == '#'+$(selector).attr('id')) {
+                inScope = true;
+            }
+        });
+
+        if (!inScope) {
+            return false;
+        }
+
         var element = $(selector),
             tab_content = element.attr('data-tab-content');
 
